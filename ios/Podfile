@@ -1,0 +1,16 @@
+platform :ios, '11.0'
+
+# Uncomment to enable Fluttter's iOS embedding
+# use_frameworks!
+use_frameworks! :linkage => :static
+
+target 'Runner' do
+  # Flutter generated pods
+  use_frameworks!
+  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+
+  # Add the necessary pods for Netcore SDK
+  pod 'smartech-base', '~> 3.5.3'
+  pod 'smartech-push', '~> 3.5.3'
+  pod 'smartech-appinbox', '~> 3.5.3'
+end

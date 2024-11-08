@@ -1,0 +1,46 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.netcore_assessment"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId = "com.example.netcore_assessment"  // Replace with your app's ID
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+        multiDexEnabled true  // Enable MultiDex support
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug  // Configure signing for release builds
+        }
+    }
+
+    dependencies {
+        implementation "com.netcore.android:smartech-sdk:${SMARTECH_BASE_SDK_VERSION}"
+        implementation 'androidx.multidex:multidex:2.0.1'
+        implementation files('libs/smartech-appinbox-3.5.3.aar')
+    }
+}
+
+flutter {
+    source = "../.."  // Ensure this points to your Flutter source
+}
